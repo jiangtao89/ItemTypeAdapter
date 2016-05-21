@@ -37,12 +37,19 @@ public class ItemViewRepository {
     }
 
     /**
-     * register item view
+     * add item view
      *
      * @param key      key
      * @param property property
      */
-    public void registerItemView(String key, ItemProperty property) {
+    public void addItemView(String key, ItemProperty property) {
+        if (key == null || key.length() == 0) {
+            return;
+        }
+
+        if (property == null) {
+            return;
+        }
         mItemViews.put(key, property);
     }
 

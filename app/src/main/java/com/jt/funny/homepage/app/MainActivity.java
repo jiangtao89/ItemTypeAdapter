@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(android.R.id.list);
         mItemViewRepository = ItemViewRepository.getInstance();
 
-        mItemViewRepository.registerItemView("nullable", ItemViewRepository.NULLABLE_ITEM_VIEW_PROPERTY);
-        mItemViewRepository.registerItemView("text", new ItemProperty(1, ItemViewTextView.ItemVO.class, ItemViewTextView.class));
-        mItemViewRepository.registerItemView("image", new ItemProperty(2, ItemViewImageView.ItemVO.class, ItemViewImageView.class));
+        mItemViewRepository.addItemView("nullable", ItemViewRepository.NULLABLE_ITEM_VIEW_PROPERTY);
+        mItemViewRepository.addItemView("text", new ItemProperty(1, ItemViewTextView.ItemVO.class, ItemViewTextView.class));
+        mItemViewRepository.addItemView("image", new ItemProperty(2, ItemViewImageView.ItemVO.class, ItemViewImageView.class));
 
         mFactory = new ItemViewFactory(this, mItemViewRepository);
         mAdapter = new ItemTypeAdapter(this, mItemViewRepository, mFactory);

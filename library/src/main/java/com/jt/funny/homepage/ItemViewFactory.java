@@ -47,6 +47,7 @@ public class ItemViewFactory {
 
         Constructor<? extends ItemView> constructor = sConstructorMap.get(itemViewTypeDesc);
 
+        // get constructor of item view
         if (constructor == null) {
             try {
                 Class<? extends ItemView> clazz = mItemViewRepository.getItemView(itemViewTypeDesc);
@@ -57,6 +58,7 @@ public class ItemViewFactory {
             }
         }
 
+        // new instance of item view
         if (constructor != null) {
             try {
                 Object[] args = mConstructorArgs;
