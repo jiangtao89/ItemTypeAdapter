@@ -19,19 +19,16 @@ public class ItemTypeAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private ItemViewFactory mItemViewFactory;
-    private ItemViewRepository mItemViewRepository;
-    private List<BaseItemVO> mItemVOs = new ArrayList<>();
+    private ItemViewManager mItemViewManager;
+    private List<ItemVO> mItemVOs = new ArrayList<>();
 
     /**
      * @param context         context
-     * @param itemViewRepository itemViewRepository
-     * @param factory         factory
+     * @param itemViewManager itemViewRepository
      */
-    public ItemTypeAdapter(Context context, ItemViewRepository itemViewRepository, ItemViewFactory factory) {
+    public ItemTypeAdapter(Context context, ItemViewManager itemViewManager) {
         mContext = context;
-        mItemViewRepository = itemViewRepository;
-        mItemViewFactory = factory;
+        mItemViewManager = itemViewManager;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -40,7 +37,7 @@ public class ItemTypeAdapter extends BaseAdapter {
      *
      * @param data data
      */
-    public void setData(List<BaseItemVO> data) {
+    public void setData(List<ItemVO> data) {
         if (data == null || data.size() == 0) {
             mItemVOs.clear();
             notifyDataSetChanged();
@@ -51,7 +48,7 @@ public class ItemTypeAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void addData(List<BaseItemVO> data) {
+    public void addData(List<ItemVO> data) {
         if (data == null || data.size() == 0) {
             return;
         }
@@ -66,7 +63,7 @@ public class ItemTypeAdapter extends BaseAdapter {
     }
 
     @Override
-    public BaseItemVO getItem(int position) {
+    public ItemVO getItem(int position) {
         return mItemVOs.get(position);
     }
 
@@ -82,16 +79,16 @@ public class ItemTypeAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return mItemViewRepository.getTypeCount();
+        return mItemViewManager.getTypeCount();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ItemView itemView = null;
-        BaseItemVO itemVO = getItem(position);
+        final ItemVO itemVO = getItem(position);
         if (convertView == null) {
             // create item view from item view factory
-            itemView = mItemViewFactory.createItemView(itemVO);
+            itemView = mItemViewManager.createItemView(mContext, itemVO);
             // create nullable item view
             if (itemView == null) {
                 itemView = new NullableItemView(mContext);

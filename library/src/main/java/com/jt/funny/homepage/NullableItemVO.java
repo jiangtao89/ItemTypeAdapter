@@ -6,7 +6,7 @@ package com.jt.funny.homepage;
  * @author jiang.tao
  * @version 1.0.0
  */
-public class NullableItemVO extends BaseItemVO {
+public class NullableItemVO extends ItemVO {
 
     public NullableItemVO() {
         super(0, "nullable");

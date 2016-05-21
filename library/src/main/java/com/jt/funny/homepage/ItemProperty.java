@@ -9,11 +9,11 @@ package com.jt.funny.homepage;
 public class ItemProperty {
 
     private int mItemViewType;
-    private Class<? extends BaseItemVO> mItemVOClass;
+    private Class<? extends ItemVO> mItemVOClass;
     private Class<? extends ItemView> mItemViewClass;
 
     public ItemProperty(int itemViewType
-            , Class<? extends BaseItemVO> itemVOClass
+            , Class<? extends ItemVO> itemVOClass
             , Class<? extends ItemView> itemViewClass) {
         mItemViewType = itemViewType;
         mItemVOClass = itemVOClass;
@@ -28,11 +28,11 @@ public class ItemProperty {
         mItemViewType = itemViewType;
     }
 
-    public Class<? extends BaseItemVO> getItemVOClass() {
+    public Class<? extends ItemVO> getItemVOClass() {
         return mItemVOClass;
     }
 
-    public void setItemVOClass(Class<? extends BaseItemVO> itemVOClass) {
+    public void setItemVOClass(Class<? extends ItemVO> itemVOClass) {
         mItemVOClass = itemVOClass;
     }
 

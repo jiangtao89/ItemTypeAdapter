@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * @author jiang.tao
  * @version 1.0.0
  */
-public interface ItemView<T extends BaseItemVO> {
+public interface ItemView<T extends ItemVO> {
 
     /**
      * list view create view

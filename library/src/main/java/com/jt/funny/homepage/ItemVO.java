@@ -6,7 +6,7 @@ package com.jt.funny.homepage;
  * @author jiang.tao
  * @version 1.0.0
  */
-public class BaseItemVO {
+public class ItemVO {
 
     /**
      * module id for statistic
@@ -23,7 +23,7 @@ public class BaseItemVO {
      */
     protected String mItemViewTypeDesc = "";
 
-    public BaseItemVO(int itemViewType, String itemViewTypeDesc) {
+    public ItemVO(int itemViewType, String itemViewTypeDesc) {
         mItemViewType = itemViewType;
         mItemViewTypeDesc = itemViewTypeDesc;
     }

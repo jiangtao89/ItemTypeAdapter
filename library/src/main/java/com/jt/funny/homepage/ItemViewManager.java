@@ -1,5 +1,7 @@
 package com.jt.funny.homepage;
 
+import android.content.Context;
+
 import java.util.HashMap;
 
 /**
@@ -8,13 +10,15 @@ import java.util.HashMap;
  * @author jiang.tao
  * @version 1.0.0
  */
-public class ItemViewRepository {
+public class ItemViewManager {
 
     private HashMap<String, ItemProperty> mItemViews = new HashMap<>();
 
     public static final NullableItemProperty NULLABLE_ITEM_VIEW_PROPERTY = new NullableItemProperty();
 
-    private static volatile ItemViewRepository sInstance = null;
+    private static volatile ItemViewManager sInstance = null;
+
+    private ItemViewFactory mItemViewFactory;
 
 
     /**
@@ -22,18 +26,31 @@ public class ItemViewRepository {
      *
      * @return ItemViewRepository
      */
-    public static ItemViewRepository getInstance() {
+    public static ItemViewManager getInstance() {
         if (sInstance == null) {
-            synchronized (ItemViewRepository.class) {
+            synchronized (ItemViewManager.class) {
                 if (sInstance == null) {
-                    sInstance = new ItemViewRepository();
+                    sInstance = new ItemViewManager();
                 }
             }
         }
         return sInstance;
     }
 
-    private ItemViewRepository() {
+    private ItemViewManager() {
+        mItemViewFactory = new ItemViewFactoryDefault(this);
+    }
+
+    /**
+     * set item view factory
+     *
+     * @param itemViewFactory itemViewFactory
+     */
+    public void setItemViewFactory(ItemViewFactory itemViewFactory) {
+        if (mItemViewFactory == null) {
+            return;
+        }
+        mItemViewFactory = itemViewFactory;
     }
 
     /**
@@ -59,7 +76,7 @@ public class ItemViewRepository {
      * @param key key
      * @return class of item view vo
      */
-    public Class<? extends BaseItemVO> getItemVO(String key) {
+    public Class<? extends ItemVO> getItemVO(String key) {
         return getProperty(key).getItemVOClass();
     }
 
@@ -98,6 +115,17 @@ public class ItemViewRepository {
      */
     public int getTypeCount() {
         return mItemViews.size();
+    }
+
+    /**
+     * create item view
+     *
+     * @param context context
+     * @param itemVO  item VO
+     * @return
+     */
+    public ItemView createItemView(Context context, ItemVO itemVO) {
+        return mItemViewFactory.createItemView(context, itemVO);
     }
 
 }

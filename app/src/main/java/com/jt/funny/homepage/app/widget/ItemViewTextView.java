@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.jt.funny.homepage.BaseItemVO;
+
 import com.jt.funny.homepage.ItemView;
 
 /**
@@ -23,14 +23,14 @@ public class ItemViewTextView implements ItemView {
     }
 
     @Override
-    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, BaseItemVO vo) {
+    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, com.jt.funny.homepage.ItemVO vo) {
         TextView textView = new TextView(mContext);
         textView.setText("item view text view");
         return textView;
     }
 
     @Override
-    public void onBindView(int position, View convertView, ViewGroup parent, BaseItemVO vo) {
+    public void onBindView(int position, View convertView, ViewGroup parent, com.jt.funny.homepage.ItemVO vo) {
 
     }
 
@@ -45,7 +45,7 @@ public class ItemViewTextView implements ItemView {
     }
 
 
-    public static class ItemVO extends BaseItemVO {
+    public static class ItemVO extends com.jt.funny.homepage.ItemVO {
 
         public ItemVO() {
             super(1, "text");

@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.jt.funny.homepage.BaseItemVO;
+
 import com.jt.funny.homepage.ItemView;
 import com.jt.funny.homepage.app.R;
 
@@ -24,14 +24,14 @@ public class ItemViewImageView implements ItemView {
     }
 
     @Override
-    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, BaseItemVO vo) {
+    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, com.jt.funny.homepage.ItemVO vo) {
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(R.drawable.ic_launcher);
         return imageView;
     }
 
     @Override
-    public void onBindView(int position, View convertView, ViewGroup parent, BaseItemVO vo) {
+    public void onBindView(int position, View convertView, ViewGroup parent, com.jt.funny.homepage.ItemVO vo) {
 
     }
 
@@ -45,7 +45,7 @@ public class ItemViewImageView implements ItemView {
 
     }
 
-    public static class ItemVO extends BaseItemVO {
+    public static class ItemVO extends com.jt.funny.homepage.ItemVO {
 
         public ItemVO() {
             super(2, "image");

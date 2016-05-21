@@ -25,12 +25,12 @@ public class NullableItemView implements ItemView {
     }
 
     @Override
-    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, BaseItemVO vo) {
+    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, ItemVO vo) {
         return new View(mContext);
     }
 
     @Override
-    public void onBindView(int position, View convertView, ViewGroup parent, BaseItemVO vo) {
+    public void onBindView(int position, View convertView, ViewGroup parent, ItemVO vo) {
 
     }
 
