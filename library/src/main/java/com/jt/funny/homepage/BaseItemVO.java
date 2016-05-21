@@ -8,6 +8,9 @@ package com.jt.funny.homepage;
  */
 public class BaseItemVO {
 
+    /**
+     * module id for statistic
+     */
     protected long mModuleID;
 
     /**
@@ -23,6 +26,14 @@ public class BaseItemVO {
     public BaseItemVO(int itemViewType, String itemViewTypeDesc) {
         mItemViewType = itemViewType;
         mItemViewTypeDesc = itemViewTypeDesc;
+    }
+
+    public long getModuleID() {
+        return mModuleID;
+    }
+
+    public void setModuleID(long moduleID) {
+        mModuleID = moduleID;
     }
 
     public int getItemViewType() {

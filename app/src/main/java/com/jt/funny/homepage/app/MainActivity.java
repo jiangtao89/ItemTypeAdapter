@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView mListView;
-    private ItemViewRepository mItemViewRepository;
+    private ItemViewRepository mRepository;
     private ItemViewFactory mFactory;
     private ItemTypeAdapter mAdapter;
 
@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mListView = (ListView) findViewById(android.R.id.list);
-        mItemViewRepository = ItemViewRepository.getInstance();
+        mRepository = ItemViewRepository.getInstance();
 
-        mItemViewRepository.addItemView("nullable", ItemViewRepository.NULLABLE_ITEM_VIEW_PROPERTY);
-        mItemViewRepository.addItemView("text", new ItemProperty(1, ItemViewTextView.ItemVO.class, ItemViewTextView.class));
-        mItemViewRepository.addItemView("image", new ItemProperty(2, ItemViewImageView.ItemVO.class, ItemViewImageView.class));
+        mRepository.addItemView("nullable", ItemViewRepository.NULLABLE_ITEM_VIEW_PROPERTY);
+        mRepository.addItemView("text", new ItemProperty(1, ItemViewTextView.ItemVO.class, ItemViewTextView.class));
+        mRepository.addItemView("image", new ItemProperty(2, ItemViewImageView.ItemVO.class, ItemViewImageView.class));
 
-        mFactory = new ItemViewFactory(this, mItemViewRepository);
-        mAdapter = new ItemTypeAdapter(this, mItemViewRepository, mFactory);
+        mFactory = new ItemViewFactory(this, mRepository);
+        mAdapter = new ItemTypeAdapter(this, mRepository, mFactory);
         mListView.setAdapter(mAdapter);
 
         mAdapter.setData(new ArrayList<BaseItemVO>() {
