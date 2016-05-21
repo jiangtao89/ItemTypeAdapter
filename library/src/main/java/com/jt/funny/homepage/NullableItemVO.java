@@ -10,6 +10,5 @@ public class NullableItemVO extends ItemVO {
 
     public NullableItemVO() {
         super(0, "nullable");
-
     }
 }

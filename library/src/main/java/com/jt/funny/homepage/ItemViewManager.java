@@ -56,10 +56,10 @@ public class ItemViewManager {
     /**
      * add item view
      *
-     * @param key      key
+     * @param key      key of item view type
      * @param property property
      */
-    public void addItemView(String key, ItemProperty property) {
+    public void add(String key, ItemProperty property) {
         if (key == null || key.length() == 0) {
             return;
         }
@@ -73,31 +73,31 @@ public class ItemViewManager {
     /**
      * get item view vo
      *
-     * @param key key
+     * @param type type of item view type
      * @return class of item view vo
      */
-    public Class<? extends ItemVO> getItemVO(String key) {
-        return getProperty(key).getItemVOClass();
+    public Class<? extends ItemVO> getItemVO(String type) {
+        return getProperty(type).getItemVOClass();
     }
 
     /**
      * get item view type
      *
-     * @param key key
+     * @param type type of item view type
      * @return type
      */
-    public int getItemViewType(String key) {
-        return getProperty(key).getItemViewType();
+    public int getItemViewType(String type) {
+        return getProperty(type).getItemViewType();
     }
 
     /**
      * get item view
      *
-     * @param key key
+     * @param type type of item view type
      * @return class of item view
      */
-    public Class<? extends ItemView> getItemView(String key) {
-        return getProperty(key).getItemViewClass();
+    public Class<? extends ItemView> getItemView(String type) {
+        return getProperty(type).getItemViewClass();
     }
 
     private ItemProperty getProperty(String key) {

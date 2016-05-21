@@ -11,8 +11,9 @@ public interface ItemVOParser {
     /**
      * parse json to vo
      *
+     * @param type item vo type
      * @param json json string
      * @return vo
      */
-    public ItemVO parse(String json);
+    public ItemVO parse(String type, String json);
 }

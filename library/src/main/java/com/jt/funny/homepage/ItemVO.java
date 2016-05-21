@@ -1,5 +1,7 @@
 package com.jt.funny.homepage;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by jiangtao on 16/5/21.
  *
@@ -11,7 +13,8 @@ public class ItemVO {
     /**
      * module id for statistic
      */
-    protected long mModuleID;
+    @SerializedName("moduleId")
+    protected long mModuleId;
 
     /**
      * item view type
@@ -28,12 +31,12 @@ public class ItemVO {
         mItemViewTypeDesc = itemViewTypeDesc;
     }
 
-    public long getModuleID() {
-        return mModuleID;
+    public long getModuleId() {
+        return mModuleId;
     }
 
-    public void setModuleID(long moduleID) {
-        mModuleID = moduleID;
+    public void setModuleId(long moduleId) {
+        mModuleId = moduleId;
     }
 
     public int getItemViewType() {
