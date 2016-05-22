@@ -12,18 +12,18 @@ import com.google.gson.JsonSyntaxException;
 public class ItemVOParserDefault implements ItemVOParser {
 
     @Override
-    public ItemVO parse(String type, String json) {
+    public ItemVO parse(String typeDesc, String itemJson) {
 
-        if (json == null || json.length() == 0) {
+        if (itemJson == null || itemJson.length() == 0) {
             return new NullableItemVO();
         }
 
         ItemViewManager viewManager = ItemViewManager.getInstance();
-        final Class itemVOClazz = viewManager.getItemVO(type);
+        final Class itemVOClazz = viewManager.getItemVO(typeDesc);
 
         try {
-            ItemVO itemVO = (ItemVO) new Gson().fromJson(json, itemVOClazz);
-            itemVO.setItemViewTypeDesc(type);
+            ItemVO itemVO = (ItemVO) new Gson().fromJson(itemJson, itemVOClazz);
+            itemVO.setItemViewTypeDesc(typeDesc);
             return itemVO;
         } catch (JsonSyntaxException e) {
             e.printStackTrace();

@@ -18,7 +18,22 @@ import java.util.ArrayList;
  */
 public class MainModelImpl implements MainModel {
 
-
+    /**
+     * json from server like this
+     *
+     * {
+     "array": [
+     {
+     "type": "text",
+     "item": "\"{\"title\": \"title of jt\"}\""
+     },
+     {
+     "type": "image",
+     "item": "\"{\"url\": \"http://d.hiphotos.baidu.com/image/h%3D360/sign=d624682592ef76c6cfd2fd2dad17fdf6/9e3df8dcd100baa1fee8fdbf4510b912c9fc2ee9.jpg\"\""
+     }
+     ]
+     }
+     */
 
     @Override
     public void request(final Callback callback) {
@@ -99,18 +114,5 @@ public class MainModelImpl implements MainModel {
         String url = "http://c.hiphotos.baidu.com/image/h%3D360/sign=0c16089cc9134954611eee62664f92dd/ac6eddc451da81cb6b1233d05066d01609243132.jpg";
     }
 
-    /**
-     * {
-     "array": [
-     {
-     "type": "text",
-     "item": "\"{\"title\": \"title of jt\"}\""
-     },
-     {
-     "type": "image",
-     "item": "\"{\"url\": \"http://d.hiphotos.baidu.com/image/h%3D360/sign=d624682592ef76c6cfd2fd2dad17fdf6/9e3df8dcd100baa1fee8fdbf4510b912c9fc2ee9.jpg\"\""
-     }
-     ]
-     }
-     */
+
 }
