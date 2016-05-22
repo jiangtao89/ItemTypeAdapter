@@ -1,7 +1,5 @@
 package com.jt.funny.homepage;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by jiangtao on 16/5/21.
  *
@@ -9,42 +7,16 @@ import com.google.gson.annotations.SerializedName;
  * @version 1.0.0
  */
 public class ItemVO {
-
-    /**
-     * module id for statistic
-     */
-    @SerializedName("moduleId")
-    protected long mModuleId;
-
-    /**
-     * item view type
-     */
-    protected int mItemViewType;
-
     /**
      * item view type describe
      */
-    protected String mItemViewTypeDesc = "";
+    protected String mItemViewTypeDesc = "nullable";
 
-    public ItemVO(int itemViewType, String itemViewTypeDesc) {
-        mItemViewType = itemViewType;
+    public ItemVO(String itemViewTypeDesc) {
         mItemViewTypeDesc = itemViewTypeDesc;
     }
 
-    public long getModuleId() {
-        return mModuleId;
-    }
-
-    public void setModuleId(long moduleId) {
-        mModuleId = moduleId;
-    }
-
-    public int getItemViewType() {
-        return mItemViewType;
-    }
-
-    public void setItemViewType(int itemViewType) {
-        mItemViewType = itemViewType;
+    public ItemVO() {
     }
 
     public String getItemViewTypeDesc() {

@@ -9,6 +9,6 @@ package com.jt.funny.homepage;
 public class NullableItemVO extends ItemVO {
 
     public NullableItemVO() {
-        super(0, "nullable");
+        super("nullable");
     }
 }

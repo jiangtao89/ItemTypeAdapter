@@ -21,7 +21,7 @@ public interface ItemView<T extends ItemVO> {
      * @param vo          vo
      * @return view
      */
-    public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, T vo);
+    View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, T vo);
 
     /**
      * list view bind vo
@@ -29,9 +29,9 @@ public interface ItemView<T extends ItemVO> {
      * @param position    position
      * @param vo          vo
      */
-    public void onBindView(int position, View convertView, ViewGroup parent, T vo);
+    void onBindView(int position, View convertView, ViewGroup parent, T vo);
 
-    public void onPause();
+    void onPause();
 
-    public void onResume();
+    void onResume();
 }

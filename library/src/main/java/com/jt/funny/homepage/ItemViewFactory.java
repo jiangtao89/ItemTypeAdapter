@@ -15,5 +15,5 @@ public interface ItemViewFactory {
      * @param itemVO item view object
      * @return item view
      */
-    public ItemView createItemView(Context context,ItemVO itemVO);
+    ItemView createItemView(Context context,ItemVO itemVO);
 }

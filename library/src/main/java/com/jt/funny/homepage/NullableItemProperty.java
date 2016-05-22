@@ -9,6 +9,6 @@ package com.jt.funny.homepage;
 public class NullableItemProperty extends ItemProperty {
 
     public NullableItemProperty() {
-        super(0, NullableItemVO.class, NullableItemView.class);
+        super(NullableItemVO.class, NullableItemView.class);
     }
 }

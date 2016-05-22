@@ -20,12 +20,10 @@ public class ItemVOParserDefault implements ItemVOParser {
 
         ItemViewManager viewManager = ItemViewManager.getInstance();
         final Class itemVOClazz = viewManager.getItemVO(type);
-        final int itemViewType = viewManager.getItemViewType(type);
 
         try {
             ItemVO itemVO = (ItemVO) new Gson().fromJson(json, itemVOClazz);
             itemVO.setItemViewTypeDesc(type);
-            itemVO.setItemViewType(itemViewType);
             return itemVO;
         } catch (JsonSyntaxException e) {
             e.printStackTrace();

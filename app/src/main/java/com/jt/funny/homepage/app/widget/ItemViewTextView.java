@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.annotations.SerializedName;
 import com.jt.funny.homepage.ItemView;
 
 /**
@@ -17,6 +18,7 @@ import com.jt.funny.homepage.ItemView;
 public class ItemViewTextView implements ItemView {
 
     private Context mContext;
+    private TextView mTextView;
 
     public ItemViewTextView(Context context) {
         mContext = context;
@@ -24,14 +26,13 @@ public class ItemViewTextView implements ItemView {
 
     @Override
     public View onCreateView(int position, View convertView, ViewGroup parent, LayoutInflater inflater, com.jt.funny.homepage.ItemVO vo) {
-        TextView textView = new TextView(mContext);
-        textView.setText("item view text view");
-        return textView;
+        mTextView = new TextView(mContext);
+        return mTextView;
     }
 
     @Override
     public void onBindView(int position, View convertView, ViewGroup parent, com.jt.funny.homepage.ItemVO vo) {
-
+        mTextView.setText(((ItemVO)vo).getTitle());
     }
 
     @Override
@@ -44,21 +45,17 @@ public class ItemViewTextView implements ItemView {
 
     }
 
-
     public static class ItemVO extends com.jt.funny.homepage.ItemVO {
 
-        public ItemVO() {
-            super(1, "text");
+        @SerializedName("title")
+        private String mTitle = "";
+
+        public String getTitle() {
+            return mTitle;
         }
 
-        private String mText = "item text view";
-
-        public String getText() {
-            return mText;
-        }
-
-        public void setText(String text) {
-            mText = text;
+        public void setTitle(String title) {
+            mTitle = title;
         }
     }
 }

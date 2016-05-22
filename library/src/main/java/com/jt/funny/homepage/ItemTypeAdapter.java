@@ -74,7 +74,7 @@ public class ItemTypeAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return getItem(position).getItemViewType();
+        return mItemViewManager.getItemViewType(getItem(position).getItemViewTypeDesc());
     }
 
     @Override

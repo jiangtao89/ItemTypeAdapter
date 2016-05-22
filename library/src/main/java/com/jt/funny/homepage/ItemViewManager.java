@@ -3,6 +3,7 @@ package com.jt.funny.homepage;
 import android.content.Context;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by jiangtao on 16/5/21.
@@ -20,6 +21,7 @@ public class ItemViewManager {
 
     private ItemViewFactory mItemViewFactory;
 
+    private AtomicInteger mAtomicInteger = new AtomicInteger(-1);
 
     /**
      * single instance
@@ -56,18 +58,27 @@ public class ItemViewManager {
     /**
      * add item view
      *
-     * @param key      key of item view type
+     * @param typeDesc      typeDesc of item view typeDesc
      * @param property property
      */
-    public void add(String key, ItemProperty property) {
-        if (key == null || key.length() == 0) {
+    public void add(String typeDesc, ItemProperty property) {
+        if (typeDesc == null || typeDesc.length() == 0) {
             return;
         }
 
         if (property == null) {
             return;
         }
-        mItemViews.put(key, property);
+
+        int type = 0;
+        ItemProperty oldProperty = mItemViews.get(typeDesc);
+        if (oldProperty == null) {
+            type = mAtomicInteger.incrementAndGet();
+        } else {
+            type = oldProperty.getItemViewType();
+        }
+        property.setItemViewType(type);
+        mItemViews.put(typeDesc, property);
     }
 
     /**

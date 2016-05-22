@@ -9,17 +9,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import com.jt.funny.homepage.*;
+
+import com.jt.funny.homepage.ItemProperty;
+import com.jt.funny.homepage.ItemTypeAdapter;
+import com.jt.funny.homepage.ItemVO;
+import com.jt.funny.homepage.ItemViewManager;
 import com.jt.funny.homepage.app.widget.ItemViewImageView;
 import com.jt.funny.homepage.app.widget.ItemViewTextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContact.MainView {
 
     private ListView mListView;
-    private ItemViewManager mRepository;
+    private ItemViewManager mViewManager;
     private ItemTypeAdapter mAdapter;
+
+    private MainContact.MainPresenter mMainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +44,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mListView = (ListView) findViewById(android.R.id.list);
-        mRepository = ItemViewManager.getInstance();
+        mViewManager = ItemViewManager.getInstance();
 
-        mRepository.add("nullable", ItemViewManager.NULLABLE_ITEM_VIEW_PROPERTY);
-        mRepository.add("text", new ItemProperty(1, ItemViewTextView.ItemVO.class, ItemViewTextView.class));
-        mRepository.add("image", new ItemProperty(2, ItemViewImageView.ItemVO.class, ItemViewImageView.class));
+        mViewManager.add("nullable", ItemViewManager.NULLABLE_ITEM_VIEW_PROPERTY);
+        mViewManager.add("text", new ItemProperty(ItemViewTextView.ItemVO.class, ItemViewTextView.class));
+        mViewManager.add("image", new ItemProperty(ItemViewImageView.ItemVO.class, ItemViewImageView.class));
+        mViewManager.add("image", new ItemProperty(ItemViewImageView.ItemVO.class, ItemViewImageView.class));
 
-        mAdapter = new ItemTypeAdapter(this, mRepository);
+        mAdapter = new ItemTypeAdapter(this, mViewManager);
         mListView.setAdapter(mAdapter);
 
-        mAdapter.setData(new ArrayList<ItemVO>() {
-            {
-                add(new NullableItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewTextView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-                add(new ItemViewImageView.ItemVO());
-            }
-        });
+        mMainPresenter = new MainPresenterImpl(this);
+        mMainPresenter.request();
     }
 
     @Override
@@ -96,5 +78,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void updateData(List<ItemVO> data) {
+        mAdapter.setData(data);
+    }
+
+    @Override
+    public void showError() {
+
     }
 }

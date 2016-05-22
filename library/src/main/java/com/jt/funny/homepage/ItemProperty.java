@@ -12,10 +12,8 @@ public class ItemProperty {
     private Class<? extends ItemVO> mItemVOClass;
     private Class<? extends ItemView> mItemViewClass;
 
-    public ItemProperty(int itemViewType
-            , Class<? extends ItemVO> itemVOClass
+    public ItemProperty(Class<? extends ItemVO> itemVOClass
             , Class<? extends ItemView> itemViewClass) {
-        mItemViewType = itemViewType;
         mItemVOClass = itemVOClass;
         mItemViewClass = itemViewClass;
     }
